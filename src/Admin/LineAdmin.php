@@ -27,7 +27,7 @@ class LineAdmin extends AbstractAdmin
         $file_options = ['required' => false, 'label' => 'Map' ];
         if ($image->getMap()) {
             $full_path = "/".Line::SERVER_PATH_TO_IMAGE_FOLDER.'/'.$image->getMap();
-            $file_options['help'] = '<br> <img src="'.$full_path.'" class="admin-preview" style="width: 150px; height: 100px;" /> <br> <br> <a class="btn btn-danger" id="delete-image-map" name="'.$image->getId().'">Удалить фотографию</a>';
+            $file_options['help'] = '<br> <img src="'.$full_path.'" class="admin-preview" style="max-width: 350px; max-height: 800px;" /> <br> <br> <a class="btn btn-danger" id="delete-image-map" name="'.$image->getId().'">Удалить фотографию</a>';
             $file_options['attr'] = array('style' => 'display: none;');
 
         }

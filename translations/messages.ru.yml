@@ -1,0 +1,36 @@
+Id: ID
+Login: Войти
+Authentication: Аутентификация
+Email: Email
+
+Username: Имя пользователя
+Password: Пароль
+User List: Список пользователей
+User Create: Создать нового пользователя
+
+Name: Название
+Line: Маршрут
+Position Station: Позиция станции
+
+Line List: Cписок маршрутов
+Code: Код
+Type: Тип
+Station: Станции
+Vehicles: Транспорт
+Start Time Operation: Начало движений
+End Time Operation: Конец движений
+Map: Карта
+
+Station List: Список станций
+
+Driver List: Список водителей
+Avatar: Аватар
+Phone: Телефон
+Vehicle Name: Название транспорта
+Vehicle Type: Тип транспорта
+Birth Date: Дата рождения
+Vehicle: Транспорт
+
+Vehicle List: Список транспорта
+Drivers: Водители
+

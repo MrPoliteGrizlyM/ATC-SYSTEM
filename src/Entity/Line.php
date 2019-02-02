@@ -6,6 +6,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\Filesystem\Filesystem;
+use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -25,6 +26,12 @@ class Line
 
     /**
      * @ORM\Column(type="string", length=50)
+     * @Assert\Length(
+     *      min = 2,
+     *      max = 50,
+     *      minMessage = "Код должен быть хотя бы из {{ limit }} символа",
+     *      maxMessage = "Код должен быть не более {{ limit }} символов"
+     * )
      */
     private $code;
 
@@ -40,6 +47,12 @@ class Line
 
     /**
      * @ORM\Column(type="string", length=30)
+     * @Assert\Length(
+     *      min = 2,
+     *      max = 30,
+     *      minMessage = "Тип должен быть хотя бы из {{ limit }} символа",
+     *      maxMessage = "Тип должен быть не более {{ limit }} символов"
+     * )
      */
     private $type;
 
