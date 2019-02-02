@@ -1,0 +1,12 @@
+{% extends '@SonataAdmin/CRUD/base_list_field.html.twig' %}
+
+{% block field %}
+    <div>
+        {% if object.avatar %}
+            <img src="/uploads/driver/{{ object.avatar }}" style="width: 150px; height: 100px;"/>
+        {% else %}
+            <img src="/uploads/no_image.png" style="width: 150px; height: 100px;"/>
+            {# or whatever to create src of image #}
+        {% endif %}
+    </div>
+{% endblock %}

@@ -1,6 +1,8 @@
 sonata_admin:
     title_logo: '/images/logo.png'
     title: 'ATC SYSTEM'
+    templates:
+        edit: "extensions.html.twig"
     assets:
         stylesheets:
             - bundles/sonatacore/vendor/bootstrap/dist/css/bootstrap.min.css
@@ -27,8 +29,14 @@ sonata_admin:
                 items:
                 - route: sonata_admin_dashboard
                   label: Главная
+            System:
+                label:                System
+                label_catalogue:      ~
+                items:
+                - admin.driver
+
         blocks:
-            - { type: sonata.admin.block.admin_list, position: left }
+            - { type: sonata.admin.block.admin_list, position: left, settings: { groups: [System] } }
 
 sonata_block:
     blocks:
