@@ -6,9 +6,14 @@
 
       $(function() {
 
-          $("#delete-image").on('click', function () {
-              var id = $("#delete-image").attr('name');
-              window.location.replace("/admin/delete/image/"+id);
+          $("#delete-image-avatar").on('click', function () {
+              var id = $("#delete-image-avatar").attr('name');
+              window.location.replace("/admin/delete/image/avatar/"+id);
+          });
+
+          $("#delete-image-map").on('click', function () {
+              var id = $("#delete-image-map").attr('name');
+              window.location.replace("/admin/delete/image/map/"+id);
           });
 
       });

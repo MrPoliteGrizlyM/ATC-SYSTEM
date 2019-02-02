@@ -33,6 +33,8 @@ sonata_admin:
                 label:                System
                 label_catalogue:      ~
                 items:
+                    - admin.line
+                    - admin.station
                     - admin.driver
                     - admin.vehicle
 

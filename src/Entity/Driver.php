@@ -207,4 +207,12 @@ class Driver
         }
     }
 
+    public function render()
+    {
+        $result = ['path' => self::SERVER_PATH_TO_IMAGE_FOLDER.'/'.$this->avatar,
+                    'entity' => 'driver'];
+        $this->avatar = null;
+        return $result;
+    }
+
 }

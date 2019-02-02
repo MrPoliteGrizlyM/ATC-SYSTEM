@@ -38,3 +38,15 @@ services:
         tags:
         - { name: sonata.admin, manager_type: orm, label: Транспорт }
         public: true
+    admin.station:
+        class: App\Admin\StationAdmin
+        arguments: [~, App\Entity\Station, ~]
+        tags:
+        - { name: sonata.admin, manager_type: orm, label: Станции }
+        public: true
+    admin.line:
+        class: App\Admin\LineAdmin
+        arguments: [~, App\Entity\Line, ~]
+        tags:
+        - { name: sonata.admin, manager_type: orm, label: Маршруты}
+        public: true

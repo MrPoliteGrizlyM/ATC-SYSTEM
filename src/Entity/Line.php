@@ -4,6 +4,8 @@ namespace App\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Symfony\Component\Filesystem\Filesystem;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -11,6 +13,9 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Line
 {
+
+    const SERVER_PATH_TO_IMAGE_FOLDER = 'uploads/map';
+
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
@@ -39,10 +44,77 @@ class Line
     private $type;
 
     /**
-     * @ORM\Column(type="string", length=50)
+     * @ORM\Column(type="string", length=50, nullable=true)
      */
     private $map;
 
+    private $image;
+
+
+    /**
+     * @return UploadedFile
+     */
+    public function getMap(): ?string
+    {
+        return $this->map;
+    }
+
+
+    public function setMap($map): self
+    {
+        $this->map = $map;
+        return $this;
+    }
+
+    public function getImage(): ?UploadedFile
+    {
+        return $this->image;
+    }
+
+    public function setImage(?UploadedFile $image = null)
+    {
+        $this->image = $image;
+        return $this;
+    }
+
+    public function upload()
+    {
+        if (null === $this->getImage()) {
+            return;
+        }
+
+        $date = new \DateTime();
+        $name = $this->getImage()->getClientOriginalName();
+
+        $type = substr($name, strpos($name, '.'));
+
+        $this->getImage()->move(
+            self::SERVER_PATH_TO_IMAGE_FOLDER,
+            "map".$date->getTimestamp().$type
+        );
+
+
+        $this->setMap("map".$date->getTimestamp().$type);
+
+    }
+
+    public function delete()
+    {
+        $fileSystem = new Filesystem();
+        $fileSystem->remove(self::SERVER_PATH_TO_IMAGE_FOLDER.'/'.$this->getMap());
+    }
+
+    public function lifecycleFileUpload()
+    {
+        $this->upload();
+    }
+
+    public function lifecycleFileDelete()
+    {
+        if ($this->getMap()){
+            $this->delete();
+        }
+    }
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Station", mappedBy="line")
@@ -113,17 +185,6 @@ class Line
         return $this;
     }
 
-    public function getMap(): ?string
-    {
-        return $this->map;
-    }
-
-    public function setMap(string $map): self
-    {
-        $this->map = $map;
-
-        return $this;
-    }
 
 
     /**
@@ -186,5 +247,18 @@ class Line
         }
 
         return $this;
+    }
+    public function __toString()
+    {
+        return $this->code ?: '';
+    }
+
+
+    public function render()
+    {
+        $result = ['path' => self::SERVER_PATH_TO_IMAGE_FOLDER.'/'.$this->map,
+            'entity' => 'line'];
+        $this->map = null;
+        return $result;
     }
 }
