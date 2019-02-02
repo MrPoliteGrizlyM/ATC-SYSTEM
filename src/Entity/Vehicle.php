@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -11,6 +12,14 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Vehicle
 {
+
+    const TYPES = [
+            'Трамвай'               => 'Трамвай',
+            'Автобус'               => 'Автобус',
+            'Ночной автобус'        => 'Ночной автобус',
+            'Междугородний автобус' => 'Междугородний автобус'
+    ];
+
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
@@ -20,6 +29,12 @@ class Vehicle
 
     /**
      * @ORM\Column(type="string", length=30)
+     * @Assert\Length(
+     *      min = 2,
+     *      max = 30,
+     *      minMessage = "Название ТС должно быть хотя бы из {{ limit }} символов",
+     *      maxMessage = "Название ТС должно быть не более {{ limit }} символов"
+     * )
      */
     private $name;
 
@@ -114,6 +129,11 @@ class Vehicle
         $this->line = $line;
 
         return $this;
+    }
+
+    public function __toString()
+    {
+        return $this->name ?: '';
     }
 
 }

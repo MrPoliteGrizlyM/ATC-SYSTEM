@@ -35,36 +35,15 @@ class DriverAdmin extends AbstractAdmin
 
 
         $formMapper->with('Водитель', ['class'=> 'col-md-4 col-lg-3'])
+                ->add('image', FileType::class, $file_options)
                 ->add('name', TextType::class)
                 ->add('birth_date', DateTimePickerType::class, [
                     'dp_use_current' => false,
                 ])
                 ->add('email')
                 ->add('phone')
-                ->add('image', FileType::class, $file_options)
+                ->add('vehicle')
                 ->end();
-//            ->add('cities', CollectionType::class, [
-//                'type_options' => [
-//                    // Prevents the "Delete" option from being displayed
-//                    'delete' => false,
-//                    'delete_options' => [
-//                        // You may otherwise choose to put the field but hide it
-//                        'type'         => HiddenType::class,
-//                        // In that case, you need to fill in the options as well
-//                        'type_options' => [
-//                            'mapped'   => false,
-//                            'required' => false,
-//                        ]
-//                    ]
-//                ]
-//            ], [
-//                'edit' => 'inline',
-//                'inline' => 'table',
-//            ]);
-
-//        if ($this->isCurrentRoute('create')) {
-//            $formMapper->remove('cities');
-//        }
     }
 
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
@@ -74,10 +53,12 @@ class DriverAdmin extends AbstractAdmin
 
     protected function configureListFields(ListMapper $listMapper)
     {
+        $listMapper->add('image', null, array('template' => '/fields/avatar.html.twig', 'label' => 'Avatar'));
         $listMapper->addIdentifier('name')
                     ->addIdentifier('email')
-                    ->addIdentifier('phone');
-        $listMapper->add('image', null, array('template' => '/fields/avatar.html.twig', 'label' => 'Avatar'));
+                    ->addIdentifier('phone')
+                    ->addIdentifier('vehicle.name')
+                    ->addIdentifier('vehicle.type');
     }
 
     public function prePersist($entity)

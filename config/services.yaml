@@ -32,3 +32,9 @@ services:
         tags:
         - { name: sonata.admin, manager_type: orm, label: Водители }
         public: true
+    admin.vehicle:
+        class: App\Admin\VehicleAdmin
+        arguments: [~, App\Entity\Vehicle, ~]
+        tags:
+        - { name: sonata.admin, manager_type: orm, label: Транспорт }
+        public: true
