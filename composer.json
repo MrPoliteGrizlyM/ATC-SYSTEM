@@ -6,6 +6,8 @@
         "ext-ctype": "*",
         "ext-iconv": "*",
         "sensio/framework-extra-bundle": "^5.1",
+        "sonata-project/admin-bundle": "3.41.0",
+        "sonata-project/doctrine-orm-admin-bundle": "3.7.0",
         "symfony/asset": "4.2.*",
         "symfony/console": "4.2.*",
         "symfony/dotenv": "4.2.*",
@@ -13,6 +15,7 @@
         "symfony/flex": "^1.1",
         "symfony/form": "4.2.*",
         "symfony/framework-bundle": "4.2.*",
+        "symfony/maker-bundle": "^1.11",
         "symfony/monolog-bundle": "^3.1",
         "symfony/orm-pack": "*",
         "symfony/process": "4.2.*",
@@ -27,7 +30,6 @@
     },
     "require-dev": {
         "symfony/debug-pack": "*",
-        "symfony/maker-bundle": "^1.0",
         "symfony/profiler-pack": "*",
         "symfony/test-pack": "*",
         "symfony/web-server-bundle": "4.2.*"
