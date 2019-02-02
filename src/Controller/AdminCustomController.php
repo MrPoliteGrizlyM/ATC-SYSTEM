@@ -16,7 +16,7 @@ class AdminCustomController extends Controller
     /**
      * @Route("/admin/delete/image/{type}/{slug}", name="admin_custom_delete_image")
      */
-    public function index($type, $slug)
+    public function deleteImage($type, $slug)
     {
         $em = $this->getDoctrine()->getManager();
         $rep = null;
@@ -37,7 +37,7 @@ class AdminCustomController extends Controller
         $em->flush();
         $em->persist($entity);
 
-        return $this->redirect('/app/'.$render['entity'].'/'.$slug.'/edit');
+        return $this->redirect('/admin/app/'.$render['entity'].'/'.$slug.'/edit');
     }
 
 }

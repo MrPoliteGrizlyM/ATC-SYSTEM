@@ -1,0 +1,28 @@
+
+{% block user_block %}
+    {% if app.user %}
+        {% set _bg_class    = "bg-light-blue" %}
+        {% set _logout_uri  = url('admin_logout') %}
+        {% set gender = app.user.gender == 1 ? 'Мужской' : 'Женский' %}
+        <li class="user-header {{ _bg_class }}">
+            <i class="fa fa-id-card-o fa-5x"></i>
+            <p>{{ app.user.name }}</p>
+        </li>
+
+                <li class="user-body">
+                    <ul>
+                        <li>Дата рождения: {{ app.user.getBirthDate | date("m/d/Y") }}</li>
+                        <li>Email: {{ app.user.email }}</li>
+                        <li>Пол: {{ gender }} </li>
+                    </ul>
+                </li>
+
+
+
+        <li class="user-footer">
+            <div class="pull-right">
+                <a href="{{ _logout_uri }}" class="btn btn-default btn-flat"><i class="fa fa-sign-out fa-fw"></i>{{ 'Logout' | trans }}</a>
+            </div>
+        </li>
+    {% endif %}
+{% endblock %}

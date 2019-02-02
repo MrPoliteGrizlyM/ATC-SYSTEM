@@ -3,7 +3,7 @@
 {% block field %}
     <div>
         {% if object.avatar %}
-            <img src="/uploads/driver/{{ object.avatar }}" style="width: 150px; height: 100px;"/>
+            <img src="/uploads/driver/{{ object.avatar }}" style="max-width: 150px; max-height: 100px;"/>
         {% else %}
             <img src="/uploads/no_image.png" style="width: 150px; height: 100px;"/>
             {# or whatever to create src of image #}

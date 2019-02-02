@@ -3,6 +3,7 @@ sonata_admin:
     title: 'ATC SYSTEM'
     templates:
         edit: "extensions.html.twig"
+        user_block: 'user_block.html.twig'
     assets:
         stylesheets:
             - bundles/sonatacore/vendor/bootstrap/dist/css/bootstrap.min.css
