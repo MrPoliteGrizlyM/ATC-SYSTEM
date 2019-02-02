@@ -41,8 +41,10 @@ sonata_admin:
 
         blocks:
             - { type: sonata.admin.block.admin_list, position: left, settings: { groups: [Управление маршрутами] } }
+            - { type: admin.block.tools, position: right, settings: { title: 'Инструменты' } }
 
 sonata_block:
     blocks:
+        admin.block.tools: ~
         sonata.admin.block.admin_list:
             contexts: [admin]

@@ -28,7 +28,7 @@ class DriverAdmin extends AbstractAdmin
         $file_options = ['required' => false, 'label' => 'Avatar' ];
         if ($image->getAvatar()) {
             $full_path = "/".Driver::SERVER_PATH_TO_IMAGE_FOLDER.'/'.$image->getAvatar();
-            $file_options['help'] = '<br> <img src="'.$full_path.'" class="admin-preview" style="width: 150px; height: 100px;" /> <br> <br> <a class="btn btn-danger" id="delete-image-avatar" name="'.$image->getId().'">Удалить фотографию</a>';
+            $file_options['help'] = '<br> <img src="'.$full_path.'" class="admin-preview" style="max-width: 150px; max-height: 100px;" /> <br> <br> <a class="btn btn-danger" id="delete-image-avatar" name="'.$image->getId().'">Удалить фотографию</a>';
             $file_options['attr'] = array('style' => 'display: none;');
 
         }

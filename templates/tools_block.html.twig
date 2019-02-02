@@ -1,0 +1,23 @@
+{% extends sonata_block.templates.block_base %}
+
+{% block block %}
+
+                <div class="box box-default">
+                    <div class="box-header with-border">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h1 class="box-title">
+                                    <i class="fa fa-wrench"></i>
+                                    {{ settings.title }}
+                                </h1>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="box-body">
+                        <div class="box-widget">
+                            <a href="{{ path_to_xml }}">Скачать XML файл</a>
+                        </div>
+                    </div>
+                </div>
+
+{% endblock %}
